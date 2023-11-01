@@ -6,16 +6,18 @@ var player = null
 @export var looking_speed = 200
 var line_of_sight = false
 var nav_ready = false
+var initial_position = Vector2.ZERO
 
 var mode = ""
 
 
-var points = []
+var points = 2
 const margin = 1.5
 
 func _ready():
-	$AnimatedSprite2D.play("move")
+	$AnimatedSprite2D.play("Moving")
 	call_deferred("nav_setup")
+	initial_position = global_position
 
 func nav_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
